@@ -30,13 +30,13 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">To Do List</a>
+                            <a class="nav-link" href="#to-do-list-section">To Do List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Timer</a>
+                            <a class="nav-link" href="#timer-section">Timer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Notes</a>
+                            <a class="nav-link" href="#notes-section">Notes</a>
                         </li>
                     </ul>
                 </div>
@@ -44,17 +44,53 @@
         </nav>
     </header>
 
-    <nav>
-        <button>To-Do</button>
-        <button>Timer</button>
-        <button>Notes</button>
-        <button>Theme</button>
-    </nav>
+
 
     <main>
-        <section id="todo-section">...</section>
-        <section id="timer-section">...</section>
-        <section id="notes-section">...</section>
+        <div class="container">
+            <div class="row">
+
+                <!-- To Do list seciton -->
+                <div id="to-do-list-section" class="col-12">
+                    <h2>To Do List</h2>
+                    <label for="new-task-input">New Task:</label>
+                    <input id="new-task-input" name="task-input" type="text" minlength="1">
+                    <input id="add-task-button" type="button" class="btn btn-success" name="add-task-button" value="Add" />
+                    <ul id="task-list" class="list-group">
+                        <!-- Task items will be added here dynamically -->
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                            Create To do List
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                            Create Timer Section
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                            Create Notes Section
+                        </li>
+                        
+                    </ul>
+                    <input type="button" class="btn btn-outline-success" id="clear-completed-button" value="Clear Completed Tasks" />
+                </div>
+
+                <!-- Timer section -->
+                <div id="timer-section" class="col-12">
+                    Timer
+                </div>
+
+                <!-- Notes section -->
+                <div id="notes-section" class="col-12">
+                    Notes
+
+                </div>
+            </div>
+        </div>
+
+
+
+
     </main>
 
     <footer>
