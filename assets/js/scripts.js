@@ -234,6 +234,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('toggle-dark-mode');
+
+    /**     
+     * Toggle Dark Mode
+     */
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if(darkModeToggle.innerHTML === '☀️') {
+        darkModeToggle.innerHTML = '🌙'; // crescent moon
+        darkModeToggle.classList.add("btn-dark");
+        darkModeToggle.classList.remove("btn-warning");
+        } else {
+            darkModeToggle.innerHTML = '☀️'; // sun
+            darkModeToggle.classList.add("btn-warning");
+            darkModeToggle.classList.remove("btn-dark");
+        }
+    });
+
 
 
     loadTasks(); // Load tasks on page load

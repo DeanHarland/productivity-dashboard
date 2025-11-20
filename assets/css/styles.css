@@ -1,3 +1,12 @@
+body.dark-mode {
+  background-color: #000;
+  color: #fff;
+}
+body.dark-mode .note-item {
+  background-color: #333;
+  color: black;
+}
+
 html{
     background-color: lightgray;
 }
@@ -10,13 +19,13 @@ html{
 /* Timer section */
 #timer-section{
     min-height: 30vh;
-    background-color: lightcyan;
+   
 }
 
 /* Notes seciton */
 #notes-section{
     min-height: 30vh;
-    background-color: lightyellow;
+    /* background-color: lightyellow; */
 }
 .note-item {
     display: flex;
