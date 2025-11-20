@@ -172,8 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const notesList = document.getElementById('notes-container');
     const addNoteButton = document.getElementById('add-note-button');
     const clearNotesButton = document.getElementById('clear-notes-button');
-    const deleteNoteButtons = document.getElementsByClassName('note-delete-button');
-
+    
     /**
      * Add Note Function
      */
