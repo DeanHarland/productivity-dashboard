@@ -7,12 +7,19 @@ html{
     min-height: 30vh;
 }
 
+/* Timer section */
 #timer-section{
     min-height: 30vh;
     background-color: lightcyan;
 }
 
+/* Notes seciton */
 #notes-section{
     min-height: 30vh;
     background-color: lightyellow;
+}
+.note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -166,9 +166,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    
+    // Notes section
+
+    const notesArea = document.getElementById('note-text-area');
+    const notesList = document.getElementById('notes-container');
+    const addNoteButton = document.getElementById('add-note-button');
+    const clearNotesButton = document.getElementById('clear-notes-button');
+    const deleteNoteButtons = document.getElementsByClassName('note-delete-button');
+
+    /**
+     * Add Note Function
+     */
+    addNoteButton.addEventListener('click', () => {
+        const noteText = notesArea.value.trim();
+        if (noteText !== '') {
+            const noteDiv = document.createElement('div');
+            noteDiv.classList.add('note-item', 'mb-2', 'p-2', 'border', 'rounded', 'bg-light');
+            noteDiv.textContent = noteText;
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('btn', 'btn-sm', 'btn-danger', 'note-delete-button', 'ms-2');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => {
+                noteDiv.remove();
+                saveNotes();
+            });
+            noteDiv.appendChild(deleteButton);
+            notesList.appendChild(noteDiv);
+            notesArea.value = '';
+            saveNotes();
+        }
+    });
+
+    /**
+     * Clear All Notes Function
+     */
+    clearNotesButton.addEventListener('click', () => {
+        notesList.innerHTML = '';
+        saveNotes();
+    });
+
+    /**
+     * Save Notes to Local Storage
+     */
+    function saveNotes() {
+        const notes = [];
+        notesList.querySelectorAll('.note-item').forEach(noteDiv => {
+            notes.push(noteDiv.firstChild.textContent); // Get text without delete button
+        });
+        localStorage.setItem('notes', JSON.stringify(notes));
+    }
+    /**
+     * Load Notes from Local Storage
+     */
+    function loadNotes() {
+        const savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
+        savedNotes.forEach(noteText => {
+            const noteDiv = document.createElement('div');
+            noteDiv.classList.add('note-item', 'mb-2', 'p-2', 'border', 'rounded', 'bg-light');
+            noteDiv.textContent = noteText;
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('btn', 'btn-sm', 'btn-danger', 'note-delete-button', 'ms-2');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => {
+                noteDiv.remove();
+            });
+            noteDiv.appendChild(deleteButton);
+            notesList.appendChild(noteDiv);
+        });
+    }
+
 
 
     loadTasks(); // Load tasks on page load
-
+    loadNotes(); // Load notes on page load
 });
