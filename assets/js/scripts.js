@@ -105,11 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Timer section
-    let minutes = 25;
-    let seconds = 0;
+    let timeLeft = 25 * 60; // 25 minutes in seconds
     let sessionCount = 0;
-    let timerInterval;
-    isRunning = false;
+    let intervalId = null;
+    let isRunning = false;
 
     const timerDisplay = document.getElementById('timer-display');
     const startButton = document.getElementById('start-timer-button');
@@ -117,15 +116,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetButton = document.getElementById('reset-timer-button');
     const sessionCountDisplay = document.getElementById('session-count');
 
+    startButton.addEventListener('click', startTimer);
+    pauseButton.addEventListener('click', pauseTimer);
+    resetButton.addEventListener('click', resetTimer);
+
     /**
      * Start timer countdown
      */
     function startTimer() {
+        if (isRunning) return; // Prevent multiple intervals
+        isRunning = true;
 
+        intervalId = setInterval(() => {
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(intervalId);
+                intervalId = null;
+                isRunning = false;
+                timeLeft = 25 * 60;
+                timerDisplay.textContent = '25:00';
+                sessionCount++;
+                sessionCountDisplay.textContent = sessionCount;
+            }
+        }, 1000);// 1 second
     }
 
+    /**
+     * Pause timer countdown
+     */
+    function pauseTimer() {
+        clearInterval(intervalId);
+        intervalId = null;
+        isRunning = false;
+    }
 
-
+    /**
+     * Reset timer to initial state
+     */
+    function resetTimer() {
+        clearInterval(intervalId);
+        intervalId = null;
+        isRunning = false;
+        timeLeft = 25 * 60;
+        timerDisplay.textContent = '25:00';
+    }
 
     loadTasks(); // Load tasks on page load
 
