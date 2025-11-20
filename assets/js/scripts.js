@@ -165,6 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
         timerDisplay.textContent = '25:00';
     }
 
+
+    
+
+
     loadTasks(); // Load tasks on page load
 
 });
