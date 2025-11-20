@@ -1,10 +1,10 @@
 body.dark-mode {
-  background-color: #000;
-  color: #fff;
+  background-color: #000 !important;
+  color: #fff !important;
 }
 body.dark-mode .note-item {
-  background-color: #333;
-  color: black;
+  background-color: #333 !important;
+  color: black !important;
 }
 
 html{
