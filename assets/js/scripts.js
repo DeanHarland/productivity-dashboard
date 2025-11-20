@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // event listener for button click
-    addTaskButton.addEventListener('click', addTask);
-
+    addTaskButton.addEventListener('click',  () => {
+        addTask();
+        saveTasks(); // save after adding
+    })
     // Task id counter
     let taskIdCounter = 0;
 
@@ -46,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.classList.contains('checkbox-toggle')) {
             const listItem = event.target.parentElement;
             listItem.classList.toggle('list-group-item-success');
+            saveTasks(); // save after toggling
         }
     }
     // Event delegation for dynamically added checkboxes
@@ -58,11 +61,50 @@ document.addEventListener('DOMContentLoaded', () => {
     clearCompletedButton.addEventListener('click', () => {
         const completedTasks = taskList.querySelectorAll('.list-group-item-success');
         completedTasks.forEach(task => task.remove());
+        saveTasks(); // save after clearing
     });
+   
+
     /**
-     * Timer Functionality
+     * Save Tasks to Local Storage
      */
+    function saveTasks() {
+    const tasks = [];
+    taskList.querySelectorAll('li').forEach(li => {
+        tasks.push({
+            id: li.id,
+            text: li.innerText,
+            completed: li.classList.contains('list-group-item-success')
+        });
+    });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    /**
+     * Load Tasks from Local Storage
+     */
+    function loadTasks() {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    savedTasks.forEach(task => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        if (task.completed) listItem.classList.add('list-group-item-success');
+        listItem.id = task.id;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.classList.add('form-check-input', 'me-1', 'checkbox-toggle');
+        checkbox.checked = task.completed;
+
+        listItem.appendChild(checkbox);
+        listItem.append(task.text);
+        taskList.appendChild(listItem);
+
+        // Make sure taskIdCounter is ahead of existing IDs
+        taskIdCounter = Math.max(taskIdCounter, parseInt(task.id) + 1);
+    });
+}
 
 
+    loadTasks(); // Load tasks on page load
 
 });
