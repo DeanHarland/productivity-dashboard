@@ -56,28 +56,24 @@
                     <label for="new-task-input">New Task:</label>
                     <input id="new-task-input" name="task-input" type="text" minlength="1">
                     <input id="add-task-button" type="button" class="btn btn-success" name="add-task-button" value="Add" />
-                    <ul id="task-list" class="list-group">
-                        <!-- Task items will be added here dynamically -->
-                        <!-- <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                            Create To do List
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                            Create Timer Section
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                            Create Notes Section
-                        </li> -->
-                        
+                    <ul id="task-list" class="list-group">         
+                        <!-- Tasks are inputted here  -->
                     </ul>
                     <input type="button" class="btn btn-outline-success" id="clear-completed-button" value="Clear Completed Tasks" />
                 </div>
 
                 <!-- Timer section -->
                 <div id="timer-section" class="col-12">
-                    Timer
+                    <h2>Timer</h2>
+                    <!-- countdown timer -->
+                     <div id="timer-display" class="display-1">
+                        25:00
+                    </div>
+                    <h5>session count</h5> <p id="session-count">0</p>
+                    
+                    <input type="button" class="btn btn-primary" id="start-timer-button" value="Start Timer" />
+                    <input type="button" class="btn btn-danger" id="pause-timer-button " value="Pause Timer" />
+                    <input type="button" class="btn btn-secondary" id="reset-timer-button" value="Reset Timer" />
                 </div>
 
                 <!-- Notes section -->

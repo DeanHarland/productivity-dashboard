@@ -1,3 +1,18 @@
 html{
     background-color: lightgray;
 }
+
+
+#to-do-list-section{
+    min-height: 30vh;
+}
+
+#timer-section{
+    min-height: 30vh;
+    background-color: lightcyan;
+}
+
+#notes-section{
+    min-height: 30vh;
+    background-color: lightyellow;
+}

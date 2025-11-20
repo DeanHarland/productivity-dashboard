@@ -102,7 +102,29 @@ document.addEventListener('DOMContentLoaded', () => {
         // Make sure taskIdCounter is ahead of existing IDs
         taskIdCounter = Math.max(taskIdCounter, parseInt(task.id) + 1);
     });
-}
+    }
+
+    // Timer section
+    let minutes = 25;
+    let seconds = 0;
+    let sessionCount = 0;
+    let timerInterval;
+    isRunning = false;
+
+    const timerDisplay = document.getElementById('timer-display');
+    const startButton = document.getElementById('start-timer-button');
+    const pauseButton = document.getElementById('pause-timer-button');
+    const resetButton = document.getElementById('reset-timer-button');
+    const sessionCountDisplay = document.getElementById('session-count');
+
+    /**
+     * Start timer countdown
+     */
+    function startTimer() {
+
+    }
+
+
 
 
     loadTasks(); // Load tasks on page load
